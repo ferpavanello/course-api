@@ -40,10 +40,11 @@ router.get('/:courseId', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  const { title, description } = req.body
   const course = new Course({
     _id: new mongoose.Types.ObjectId(),
-    title: req.body.title,
-    description: req.body.description,
+    title,
+    description,
   })
 
   course

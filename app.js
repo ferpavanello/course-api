@@ -2,6 +2,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
+const cors = require('cors')
 
 const courseRoutes = require("./routes/courses");
 const studentRoutes = require('./routes/students')
@@ -13,6 +14,7 @@ mongoose
   .connect(uri, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(() => console.log('Connected with atlas'))
 
+app.use(cors())
 app.use(bodyParser.json())
 
 app.use("/course", courseRoutes);
